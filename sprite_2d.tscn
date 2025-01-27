@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7krg1yis26ul"]
+
+[ext_resource type="Texture2D" uid="uid://bqh8f8njbgv38" path="res://Asset_3/character/Owlet_Monster_Idle_4.png" id="1_ejsl2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpb74"]
+atlas = ExtResource("1_ejsl2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcg0f"]
+atlas = ExtResource("1_ejsl2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sitcb"]
+atlas = ExtResource("1_ejsl2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jpkf"]
+atlas = ExtResource("1_ejsl2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_37s1u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpb74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcg0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sitcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jpkf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3eydr"]
+radius = 8.0
+height = 26.0
+
+[node name="player" type="CharacterBody2D"]
+collision_layer = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -15)
+sprite_frames = SubResource("SpriteFrames_37s1u")
+animation = &"idle"
+autoplay = "idle"
+frame = 1
+frame_progress = 0.725823
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_3eydr")
